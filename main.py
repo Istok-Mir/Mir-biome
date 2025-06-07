@@ -1,7 +1,4 @@
-from Mir import LanguageServer
-from Mir.runtime import deno
-from Mir.api import ActivityIndicator
-from Mir.package_storage import PackageStorage, run_command
+from Mir import LanguageServer, deno, ActivityIndicator, PackageStorage, run_command
 import sublime
 
 
