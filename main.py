@@ -1,4 +1,4 @@
-from Mir import LanguageServer, deno, LoaderInStatusBar, PackageStorage, run_command
+from Mir import LanguageServer, deno, LoaderInStatusBar, PackageStorage, command
 
 
 server_storage = PackageStorage(__package__, tag='0.0.1', sync_folder="./language-server")
@@ -17,7 +17,7 @@ class BiomeLanguageServer(LanguageServer):
         server_path = server_storage / "language-server" / "node_modules" / '@biomejs' / 'biome' / 'bin' / 'biome'
         if not server_path.exists():
             with LoaderInStatusBar(f'installing {self.name}'):
-                await run_command([deno.path, "install"], cwd=str(server_storage / "language-server"))
+                await command([deno.path, "install"], cwd=str(server_storage / "language-server"))
 
         # start process
         await self.connect('stdio', {
